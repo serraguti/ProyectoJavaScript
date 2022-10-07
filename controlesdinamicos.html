@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 80px; height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generar controles dinámicos</h1>
+    <input type="range" id="rango" min="1" max="14" value="1"
+    onchange="crearImagenes()"/>
+    <p id="valorrango">1</p>
+    <div id="capa"></div>
+    <script>
+        function crearImagenes() {
+            var capa = document.getElementById("capa")     ;
+            var rango = document.getElementById("rango");
+            document.getElementById("valorrango").innerText = rango.value;
+            var numeroImagenes = parseInt(rango.value);
+            //LIMPIAMOS EL PARENT PARA INCLUIR NUEVAS IMAGENES
+            capa.innerText = "";
+            //BUCLE PARA DIBUJAR X IMAGENES
+            for (var i = 1; i <= numeroImagenes; i++){
+                //CREAMOS UN OBJETO IMAGEN POR CADA ITERACION
+                var imagen = document.createElement("img");
+                //ASIGNAMOS LAS PROPIEDADES QUE DESEEMOS
+                imagen.src = "images/batman.jpg";
+                //AGREGAMOS AL PARENT EL OBJETO
+                capa.appendChild(imagen);
+                //CREAMOS EVENTO PARA LA IMAGEN
+                imagen.addEventListener("click", function() {
+                    this.src = "images/joker.jpg";
+                    //BUSCAMOS EL PARENT
+                    var padre = document.getElementById("capa");
+                    //IGUAL QUE TENEMOS appendChild() DE UN 
+                    //PARENT, TAMBIEN TENEMOS removeChild()
+                    //padre.removeChild(this); //ES CORRECTO?????
+                    console.log("Posición: " + this.offsetTop);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

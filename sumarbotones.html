@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sumar botones</h1>
+    <button type="button">4</button>
+    <button type="button">6</button>
+    <button type="button">1</button>
+    <button type="button">99</button>
+    <button type="button">66</button>
+    <button type="button">34</button>
+    <button type="button">22</button>
+    <h1 style="color:blue" id="resultado">La suma es 0</h1>
+    <script>
+        var suma = 0;        
+        window.onload = function () {
+            //BUSCAMOS TODOS LOS OBJETOS QUE SEAN DE TIPO 
+            //BUTTON
+            var botones = document.getElementsByTagName("button");
+            //RECORREMOS TODOS LOS BOTONES
+            for (var boton of botones)
+                //ASOCIAMOS EL BOTON AL EVENTO
+                boton.addEventListener("click", function() {
+                    this.style.backgroundColor = "red";
+                    var numero = parseInt(this.innerText);
+                    suma += numero;
+                    document.getElementById("resultado").innerText = 
+                    "La suma es " + suma;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

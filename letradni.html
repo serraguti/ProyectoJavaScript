@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Introduzca número DNI </label>
+    <input type="text" id="cajadni" required/>
+    <button type="button" onclick="getLetraDni()">
+        Mostrar Letra
+    </button>
+    <hr/>
+    <label>Introduca ISBN </label>
+    <input type="text" id="cajaisbn"/>
+    <button type="button" onclick="evaluarIsbn()">
+        Validar ISBN
+    </button>
+    <h1 style="color:red" id="resultado"></h1>
+    <script>
+        function evaluarIsbn() {
+            var cajaIsbn = document.getElementById("cajaisbn");
+            var isbn = cajaIsbn.value;
+            var suma = 0;
+            for (var i = 0; i < isbn.length; i++){
+                var caracter = isbn.charAt(i);
+                var numero = parseInt(caracter);
+                var operacion = numero * (i + 1);
+                suma += operacion;
+            }
+            var resultado = document.getElementById("resultado");
+            if (suma%11 == 0){
+                resultado.innerText = "ISBN correcto";
+                resultado.style.color = "blue";
+            }else{
+                resultado.innerText = "ISBN INCORRECTO";
+                resultado.style.color = "red";
+            }
+        }
+        function getLetraDni(){
+            var resultadosDni = "TRWAGMYFPDXBNJZSQVHLCKET";
+            var cajadni = document.getElementById("cajadni");
+            if (cajadni.value == ""){
+                cajadni.style.backgroundColor = "red";
+            }else{
+                cajadni.style.backgroundColor = "white";
+                var numeroDni = parseInt(cajadni.value);
+                var valor = 
+                    (numeroDni - (Math.trunc(numeroDni / 23) * 23));
+                var letraDni = resultadosDni.charAt(valor);
+                document.getElementById("resultado").innerText = 
+                "Letra: " + letraDni;
+            }
+        }
+    </script>
+</body>
+</html>

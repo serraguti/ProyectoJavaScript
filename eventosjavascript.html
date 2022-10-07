@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Eventos delegados</h1>
+    <h1 style="color:blue" id="resultado"></h1>
+    <button type="button" onclick="asociarEvento()">
+        Asociar eventos
+    </button>
+    <button type="button" id="botonacciones">
+        Realizar cosas
+    </button>
+    <button type="button" id="boton2">
+        Otro botón
+    </button>
+    <script>
+        //AL CARGAR LA PAGINA, ASOCIAMOS EVENTOS DINAMICAMENTE
+        window.onload = function() {
+            //BUSCAMOS LOS CONTROLES PARA ASOCIAR
+            var boton = document.getElementById("botonacciones");
+            var boton2 = document.getElementById("boton2");
+            //ASOCIAMOS LOS EVENTOS
+            boton.addEventListener("click", mostrarMensaje);
+            boton2.addEventListener("click", mostrarMensaje);
+        }
+
+        //VARIABLE PARA SABER EL NUMERO DE EVENTOS ASOCIADOS
+        var contador = 0;
+        function asociarEvento() {
+            contador += 1;
+            document.getElementById("resultado").innerText = 
+            "Eventos asociados: " + contador;
+            //COMENZAMOS CON FUNCIONES DECLARATIVAS
+            //VAMOS A UTILIZAR FUNCIONES EXTERNAS
+            //BUSCAMOS EL BOTON PARA ASOCIAR EVENTO
+            var boton = document.getElementById("botonacciones");
+            // boton.onclick = mostrarMensaje;
+            // boton.onclick = mostrarMensaje2;
+            //COMENTARIOS EN BLOQUE:  CONTROL + K + C
+            //DESCOMENTAR EN BLOQUE:  CONTROL + K + U
+            //ASOCIAMOS LA FUNCION CON ADDEVENTLISTENER
+            //CON FUNCIONES DECLARATIVAS, NO EXISTE PILA 
+            //DE LLAMADAS EN EL MISMO NOMBRE DE FUNCION
+            // boton.addEventListener("click", mostrarMensaje);
+            // boton.addEventListener("click", mostrarMensaje2);
+            //AHORA VAMOS A PROBAR LO MISMO, PERO CON FUNCIONES 
+            //ANONIMAS
+            // boton.onclick = function() {
+            //     alert("Mensaje en función anónima");
+            // }
+            var boton2 = document.getElementById("boton2");
+            boton.addEventListener("click", mostrarMensaje);
+            boton2.addEventListener("click", mostrarMensaje);
+            //EXISTE PILA DE LLAMADAS CON LA MISMA FUNCION
+            // boton.addEventListener("click", function() {
+            //     alert("Mensaje desde función anónima "
+            //     + this.innerText);
+            // });
+        }
+
+        //FUNCION PARA MOSTRAR UN MENSAJE
+        function mostrarMensaje() {
+            alert("mensaje molesto... " + this.innerText);
+            this.style.backgroundColor = "yellow";
+        }
+
+        function mostrarMensaje2() {
+            alert("mensaje molesto de nuevo...");
+        }        
+    </script>
+</body>
+</html>

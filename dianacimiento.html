@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>día nacimiento semana</h1>
+    <label>Día </label>
+    <input type="text" id="cajadia"/><br/>
+    <label>Mes </label>
+    <input type="text" id="cajames"/><br/>
+    <label>Año </label>
+    <input type="text" id="cajaanyo"/><br/>
+    <button type="button" onclick="getDiaSemana()">
+        Mostrar día semana
+    </button>
+    <h1 style="color:blue" id="resultado"></h1>
+    <script>
+        function getDiaSemana(){
+            var cajadia = document.getElementById("cajadia");
+            var cajames = document.getElementById("cajames");
+            var cajaanyo = document.getElementById("cajaanyo");
+            var dia = parseInt(cajadia.value);
+            var mes = parseInt(cajames.value);
+            var anyo = parseInt(cajaanyo.value);
+            if (mes == 1){
+                mes = 13;
+                anyo--;
+            }else if (mes == 2){
+                mes = 14;
+                anyo -= 1;
+            }
+            //Multiplicar el Mes más 1 por 3 y dividirlo entre 5
+            var op1 = parseInt(((mes + 1) * 3) / 5);
+            console.log("Operacion 1: " + op1);
+            var op2 = parseInt(anyo / 4);
+            console.log("Operacion 2: " + op2);
+            var op3 = parseInt(anyo / 100);
+            console.log("Operacion 3: " + op3);
+            var op4 = Math.trunc(anyo / 400);
+            console.log("Operacion 4: " + op4);
+            /*
+            5. Sumar el dia, el doble del mes, el año
+            , el resultado de la operación 1
+, el resultado de la operación 2
+, menos el resultado de la operación 3 más la operación 4 más 2.
+            */
+           var op5 = 
+             parseInt(dia + (mes * 2)+ anyo + op1 + op2 - op3 + op4 + 2);
+            console.log("Operacion 5 " + op5);
+            var op6 = parseInt(op5 / 7);
+            console.log("Operacion 6 " + op6);
+            var valor = parseInt(op5 - (op6 * 7));
+            console.log("Resultado " + valor);
+            var h1 = document.getElementById("resultado");
+            switch (valor){
+                case 0:
+                    resultado.innerText = "SABADO";
+                    break;
+                case 1:
+                    resultado.innerText = "DOMINGO";
+                    break;
+                case 2:
+                    resultado.innerText = "LUNES";
+                    break;
+                case 3:
+                    resultado.innerText = "MARTES";
+                    break;
+                case 4:
+                    resultado.innerText = "MIERCOLES";
+                    break;
+                case 5:
+                    resultado.innerText = "JUEVES";
+                    break;
+                case 6:
+                    resultado.innerText = "VIERNES";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

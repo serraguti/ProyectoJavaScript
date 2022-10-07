@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Generar Checkbox</h1>
+    <input type="range" id="rango"
+     min="1" max="50" onchange="generarCheckbox()" value="1"/>
+    <p id="valorrango"></p>
+    <div id="capa"></div>
+    <h1 style="color:blue" id="resultado">
+        La suma es 0
+    </h1>
+    <script>
+        function generarCheckbox(){
+            var suma = 0;
+            var capa = document.getElementById("capa");
+            var rango = document.getElementById("rango");
+            document.getElementById("valorrango")
+            .innerText = rango.value;
+            var numero = parseInt(rango.value);
+            capa.innerText = "";
+            for (var i = 1; i <= numero; i++){
+                var random = parseInt(Math.random() * 100) +1;
+                var check = document.createElement("input");
+                check.type = "checkbox";
+                check.value = random;
+                var label = document.createElement("label");
+                label.innerText = random;
+                capa.appendChild(check);
+                capa.appendChild(label);
+                check.onchange = function() {
+                    var value = parseInt(this.value);
+                    if (this.checked == true){
+                        suma += value;
+                    }else{
+                        suma -= value;
+                    }
+                    document.getElementById("resultado").innerText = 
+                    "La suma es " + suma;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

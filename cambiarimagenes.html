@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cambiar imágenes dinámicas</h1>
+    <img src="images/batman.jpg" style="width:150px; height: 150px"/>
+    <img src="images/batman.jpg" style="width:150px; height: 150px"/>
+    <img src="images/batman.jpg" style="width:150px; height: 150px"/>
+    <img src="images/batman.jpg" style="width:150px; height: 150px"/>
+    <img src="images/batman.jpg" style="width:150px; height: 150px"/>
+
+    <script>
+        window.onload = function() {
+            var imagenes = document.images;
+            for (var img of imagenes){
+                img.addEventListener("mouseover", function() {
+                    this.src = "images/joker.jpg";
+                });
+                img.onmouseout = function() {
+                    this.src = "images/batman.jpg";
+                }
+                //COMENTARIOS
+            }
+        }
+    </script>
+</body>
+</html>

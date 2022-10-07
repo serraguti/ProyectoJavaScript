@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sumar números STRING</h1>
+    <label>Introduzca números: </label>
+    <input type="text" id="cajanumeros"/>
+    <button type="button" onclick="sumarNumeros()">
+        Mostrar suma de números
+    </button>
+    <h1 style="color:red" id="resultado"></h1>
+    <script>
+        function sumarNumeros() {
+            var cajanumeros = document.getElementById("cajanumeros");
+            var textoNumeros = cajanumeros.value;
+            var suma = 0;
+            //RECORREMOS TODOS LOS CARACTERES DE LA CADENA CON UN BUCLE
+            for (var i = 0; i < textoNumeros.length; i++){
+                //CAPTURAMOS CADA CARACTER DEL TEXTO
+                var caracter = textoNumeros.charAt(i);
+                //CONVERTIMOS EL CARACTER A NUMERO
+                var numero = parseInt(caracter);
+                suma += numero;
+            }
+            document.getElementById("resultado").innerText = 
+            "La suma de " + textoNumeros + " es " + suma;
+        }
+    </script>
+</body>
+</html>

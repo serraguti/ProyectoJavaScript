@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Número 1</label>
+    <input type="text" id="caja1"/><br/>
+    <label>Número 2</label>
+    <input type="text" id="caja2"/><br/>
+    <label>Número 3</label>
+    <input type="text" id="caja3"/><br/>
+    <button type="button" onclick="evaluarNumeros()">
+        Evaluar números
+    </button>
+    <h2 id="resultado"></h2>
+</body>
+<script>
+    function evaluarNumeros(){
+        var caja1 = document.getElementById("caja1");
+        var caja2 = document.getElementById("caja2");
+        var caja3 = document.getElementById("caja3");
+        var num1 = parseInt(caja1.value);
+        var num2 = parseInt(caja2.value);
+        var num3 = parseInt(caja3.value);
+        var mayor = 0;
+        var menor = 0;
+        var intermedio = 0;
+        if (num1 >= num2 && num1 >= num3){
+            mayor = num1;
+        }else if (num2 >= num1 && num2 >= num3){
+            mayor = num2;
+        }else {
+            mayor = num3;
+        }
+        if (num1 <= num2 && num1 <= num3){
+            menor = num1;
+        }else if (num2 <= num1 && num2 <= num3){
+            menor = num2;
+        }else {
+            menor = num3;
+        }
+        var suma = num1 + num2 + num3;
+        intermedio = suma - mayor - menor;
+        document.getElementById("resultado").innerText = 
+        "Mayor " + mayor + ", Menor: " + menor 
+        + ", Intermedio " + intermedio;
+    }
+</script>
+</html>
